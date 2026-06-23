@@ -4,15 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Agenda Sacramental</title>
+    <!-- Bootstrap 5 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
-        body {
-            background-color: #f8f9fa;
-        }
-        .card {
-            border: none;
-            border-top: 5px solid #0d6efd; /* Detalle azul profesional */
-        }
+        body { background-color: #f8f9fa; }
+        .card { border: none; border-top: 5px solid #0d6efd; }
         .form-section-title {
             background-color: #e9ecef;
             padding: 8px 12px;
@@ -23,15 +19,8 @@
             margin-bottom: 15px;
             border-radius: 4px;
         }
-        /* Ajustes específicos para que las columnas pequeñas luzcan perfectas */
-        .col-oficio {
-            width: 10%;
-        }
-        th {
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            vertical-align: middle;
-        }
+        .col-oficio { width: 10%; }
+        th { font-size: 0.75rem; text-transform: uppercase; vertical-align: middle; }
     </style>
 </head>
 <body>
@@ -39,6 +28,7 @@
 <div class="container my-5">
     <div class="card shadow-sm p-4 bg-white rounded">
         
+        <!-- Encabezado Principal -->
         <div class="text-center mb-4">
             <h2 class="fw-bold text-uppercase tracking-wide">Agenda Sacramental</h2>
             <p class="text-muted">Formulario de Planificación de Reunión</p>
@@ -47,71 +37,76 @@
         <form id="agendaForm">
             <div class="row g-4">
                 
+                <!-- COLUMNA IZQUIERDA -->
                 <div class="col-lg-5 col-md-12 border-end-lg">
                     <div class="p-2">
                         <h5 class="fw-bold text-primary mb-3">Planeamiento de la Reunión Sacramental</h5>
                         
                         <div class="mb-4">
                             <div class="form-section-title">Anuncios</div>
-                            <textarea class="form-control" rows="8" placeholder="Escriba los anuncios aquí..."></textarea>
+                            <textarea id="anuncios" class="form-control" rows="8" placeholder="Escriba los anuncios aquí..."></textarea>
                         </div>
 
                         <div class="mb-4">
                             <div class="form-section-title">Negocios</div>
-                            <textarea class="form-control" rows="8" placeholder="Escriba los asuntos de negocios de la presidencia..."></textarea>
+                            <textarea id="negocios" class="form-control" rows="8" placeholder="Escriba los asuntos de negocios de la presidencia..."></textarea>
                         </div>
                     </div>
                 </div>
 
+                <!-- COLUMNA DERECHA -->
                 <div class="col-lg-7 col-md-12">
                     <div class="p-2">
                         
+                        <!-- Datos Generales -->
                         <div class="row g-3 mb-4">
                             <div class="col-md-6">
                                 <label class="form-label fw-semibold">Barrio</label>
-                                <input type="text" class="form-control" placeholder="Nombre del barrio">
+                                <input type="text" id="barrio" class="form-control" placeholder="Nombre del barrio" required>
                             </div>
                             <div class="col-md-3">
                                 <label class="form-label fw-semibold">Fecha</label>
-                                <input type="date" class="form-control">
+                                <input type="date" id="fecha" class="form-control" required>
                             </div>
                             <div class="col-md-3">
                                 <label class="form-label fw-semibold">Asistencia</label>
-                                <input type="number" class="form-control" placeholder="0">
+                                <input type="number" id="asistencia" class="form-control" placeholder="0">
                             </div>
                             <div class="col-md-6">
                                 <label class="form-label fw-semibold">Preside</label>
-                                <input type="text" class="form-control" placeholder="Nombre de quien preside">
+                                <input type="text" id="preside" class="form-control" placeholder="Nombre de quien preside">
                             </div>
                             <div class="col-md-6">
                                 <label class="form-label fw-semibold">Dirige</label>
-                                <input type="text" class="form-control" placeholder="Nombre de quien dirige">
+                                <input type="text" id="dirige" class="form-control" placeholder="Nombre de quien dirige">
                             </div>
                         </div>
 
+                        <!-- Bloque de Apertura -->
                         <div class="row g-3 mb-4">
                             <div class="col-md-3">
                                 <label class="form-label fw-semibold">Himno Nº</label>
-                                <input type="text" class="form-control">
+                                <input type="text" id="himnoApertura" class="form-control">
                             </div>
                             <div class="col-md-9">
                                 <label class="form-label fw-semibold">Oración Inicial</label>
-                                <input type="text" class="form-control" placeholder="Nombre de quien ofrece la oración">
+                                <input type="text" id="oracionInicial" class="form-control" placeholder="Nombre de quien ofrece la oración">
                             </div>
                             <div class="col-md-12">
                                 <label class="form-label fw-semibold">Asuntos de Negocios</label>
-                                <input type="text" class="form-control" placeholder="Notas breves o aprobaciones">
+                                <input type="text" id="asuntosNegociosBreve" class="form-control" placeholder="Notas breves o aprobaciones">
                             </div>
                             <div class="col-md-4">
                                 <label class="form-label fw-semibold">Himno Sacramental Nº</label>
-                                <input type="text" class="form-control">
+                                <input type="text" id="himnoSacramental" class="form-control">
                             </div>
                         </div>
 
+                        <!-- Mensajes - Primera Parte -->
                         <div class="mb-4">
                             <div class="form-section-title">Discursantes / Mensajes (Parte 1)</div>
                             <div class="table-responsive">
-                                <table class="table table-bordered align-middle">
+                                <table class="table table-bordered align-middle" id="tablaMensajes1">
                                     <thead class="table-light">
                                         <tr>
                                             <th style="width: 50%;">Compartirán Mensajes</th>
@@ -120,29 +115,31 @@
                                     </thead>
                                     <tbody>
                                         <tr>
-                                            <td><input type="text" class="form-control form-control-sm"></td>
-                                            <td><input type="text" class="form-control form-control-sm"></td>
+                                            <td><input type="text" class="form-control form-control-sm discursante"></td>
+                                            <td><input type="text" class="form-control form-control-sm tema"></td>
                                         </tr>
                                         <tr>
-                                            <td><input type="text" class="form-control form-control-sm"></td>
-                                            <td><input type="text" class="form-control form-control-sm"></td>
+                                            <td><input type="text" class="form-control form-control-sm discursante"></td>
+                                            <td><input type="text" class="form-control form-control-sm tema"></td>
                                         </tr>
                                     </tbody>
                                 </table>
                             </div>
                         </div>
 
+                        <!-- Intermedio -->
                         <div class="row g-3 mb-4">
                             <div class="col-md-3">
-                                <label class="form-label fw-semibold">Himno Nº</label>
-                                <input type="text" class="form-control">
+                                <label class="form-label fw-semibold">Himno Intermedio Nº</label>
+                                <input type="text" id="himnoIntermedio" class="form-control">
                             </div>
                         </div>
 
+                        <!-- Mensajes - Segunda Parte -->
                         <div class="mb-4">
                             <div class="form-section-title">Discursantes / Mensajes (Parte 2)</div>
                             <div class="table-responsive">
-                                <table class="table table-bordered align-middle">
+                                <table class="table table-bordered align-middle" id="tablaMensajes2">
                                     <thead class="table-light">
                                         <tr>
                                             <th style="width: 50%;">Compartirán Mensajes</th>
@@ -151,32 +148,34 @@
                                     </thead>
                                     <tbody>
                                         <tr>
-                                            <td><input type="text" class="form-control form-control-sm"></td>
-                                            <td><input type="text" class="form-control form-control-sm"></td>
+                                            <td><input type="text" class="form-control form-control-sm discursante"></td>
+                                            <td><input type="text" class="form-control form-control-sm tema"></td>
                                         </tr>
                                         <tr>
-                                            <td><input type="text" class="form-control form-control-sm"></td>
-                                            <td><input type="text" class="form-control form-control-sm"></td>
+                                            <td><input type="text" class="form-control form-control-sm discursante"></td>
+                                            <td><input type="text" class="form-control form-control-sm tema"></td>
                                         </tr>
                                     </tbody>
                                 </table>
                             </div>
                         </div>
 
+                        <!-- Cierre -->
                         <div class="row g-3 mb-4">
                             <div class="col-md-3">
-                                <label class="form-label fw-semibold">Himno Nº</label>
-                                <input type="text" class="form-control">
+                                <label class="form-label fw-semibold">Himno Clausura Nº</label>
+                                <input type="text" id="himnoClausura" class="form-control">
                             </div>
                             <div class="col-md-9">
                                 <label class="form-label fw-semibold">Oración Final</label>
-                                <input type="text" class="form-control" placeholder="Nombre de quien ofrece la oración">
+                                <input type="text" id="oracionFinal" class="form-control" placeholder="Nombre de quien ofrece la oración">
                             </div>
                         </div>
 
+                        <!-- SECCIÓN DE ORDENANZAS Y BENDICIONES (IDÉNTICA AL MARCO VERDE) -->
                         <div class="mb-4">
                             <div class="table-responsive">
-                                <table class="table table-bordered align-middle text-center m-0">
+                                <table class="table table-bordered align-middle text-center m-0" id="tablaOrdenanzas">
                                     <thead class="table-light fw-bold">
                                         <tr>
                                             <th style="width: 25%;">Ordenado al Sacerdocio</th>
@@ -187,40 +186,41 @@
                                         </tr>
                                     </thead>
                                     <tbody>
+                                        <!-- Generamos 5 filas vacías igual al papel -->
                                         <tr>
-                                            <td><input type="text" class="form-control form-control-sm"></td>
-                                            <td><input type="text" class="form-control form-control-sm text-center"></td>
-                                            <td><input type="text" class="form-control form-control-sm"></td>
-                                            <td><input type="text" class="form-control form-control-sm"></td>
-                                            <td><input type="text" class="form-control form-control-sm"></td>
+                                            <td><input type="text" class="form-control form-control-sm ordenado"></td>
+                                            <td><input type="text" class="form-control form-control-sm text-center oficio"></td>
+                                            <td><input type="text" class="form-control form-control-sm efectuoOrden"></td>
+                                            <td><input type="text" class="form-control form-control-sm nino"></td>
+                                            <td><input type="text" class="form-control form-control-sm efectuoBendicion"></td>
                                         </tr>
                                         <tr>
-                                            <td><input type="text" class="form-control form-control-sm"></td>
-                                            <td><input type="text" class="form-control form-control-sm text-center"></td>
-                                            <td><input type="text" class="form-control form-control-sm"></td>
-                                            <td><input type="text" class="form-control form-control-sm"></td>
-                                            <td><input type="text" class="form-control form-control-sm"></td>
+                                            <td><input type="text" class="form-control form-control-sm ordenado"></td>
+                                            <td><input type="text" class="form-control form-control-sm text-center oficio"></td>
+                                            <td><input type="text" class="form-control form-control-sm efectuoOrden"></td>
+                                            <td><input type="text" class="form-control form-control-sm nino"></td>
+                                            <td><input type="text" class="form-control form-control-sm efectuoBendicion"></td>
                                         </tr>
                                         <tr>
-                                            <td><input type="text" class="form-control form-control-sm"></td>
-                                            <td><input type="text" class="form-control form-control-sm text-center"></td>
-                                            <td><input type="text" class="form-control form-control-sm"></td>
-                                            <td><input type="text" class="form-control form-control-sm"></td>
-                                            <td><input type="text" class="form-control form-control-sm"></td>
+                                            <td><input type="text" class="form-control form-control-sm ordenado"></td>
+                                            <td><input type="text" class="form-control form-control-sm text-center oficio"></td>
+                                            <td><input type="text" class="form-control form-control-sm efectuoOrden"></td>
+                                            <td><input type="text" class="form-control form-control-sm nino"></td>
+                                            <td><input type="text" class="form-control form-control-sm efectuoBendicion"></td>
                                         </tr>
                                         <tr>
-                                            <td><input type="text" class="form-control form-control-sm"></td>
-                                            <td><input type="text" class="form-control form-control-sm text-center"></td>
-                                            <td><input type="text" class="form-control form-control-sm"></td>
-                                            <td><input type="text" class="form-control form-control-sm"></td>
-                                            <td><input type="text" class="form-control form-control-sm"></td>
+                                            <td><input type="text" class="form-control form-control-sm ordenado"></td>
+                                            <td><input type="text" class="form-control form-control-sm text-center oficio"></td>
+                                            <td><input type="text" class="form-control form-control-sm efectuoOrden"></td>
+                                            <td><input type="text" class="form-control form-control-sm nino"></td>
+                                            <td><input type="text" class="form-control form-control-sm efectuoBendicion"></td>
                                         </tr>
                                         <tr>
-                                            <td><input type="text" class="form-control form-control-sm"></td>
-                                            <td><input type="text" class="form-control form-control-sm text-center"></td>
-                                            <td><input type="text" class="form-control form-control-sm"></td>
-                                            <td><input type="text" class="form-control form-control-sm"></td>
-                                            <td><input type="text" class="form-control form-control-sm"></td>
+                                            <td><input type="text" class="form-control form-control-sm ordenado"></td>
+                                            <td><input type="text" class="form-control form-control-sm text-center oficio"></td>
+                                            <td><input type="text" class="form-control form-control-sm efectuoOrden"></td>
+                                            <td><input type="text" class="form-control form-control-sm nino"></td>
+                                            <td><input type="text" class="form-control form-control-sm efectuoBendicion"></td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -231,9 +231,10 @@
                 </div>
             </div>
 
+            <!-- Botón de Guardar -->
             <div class="row mt-4">
                 <div class="col-12 text-end">
-                    <button type="submit" class="btn btn-primary btn-lg px-5 shadow-sm">Guardar Agenda</button>
+                    <button type="submit" id="btnGuardar" class="btn btn-primary btn-lg px-5 shadow-sm">Guardar Agenda</button>
                 </div>
             </div>
         </form>
@@ -241,6 +242,112 @@
     </div>
 </div>
 
+<!-- Bootstrap 5 Bundle JS -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- CONEXIÓN FIREBASE EN MÓDULOS -->
+<script type="module">
+    // Importar los módulos necesarios de Firebase Web SDK
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+    import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+
+    // Tus credenciales asignadas
+    const firebaseConfig = {
+        apiKey: "AIzaSyBsUTDtjFWDknix-1Mhb7gtJBd6MQbsUOg",
+        authDomain: "agendasacramental-7383d.firebaseapp.com",
+        projectId: "agendasacramental-7383d",
+        storageBucket: "agendasacramental-7383d.firebasestorage.app",
+        messagingSenderId: "732254202879",
+        appId: "1:732254202879:web:2f8e48425e2360288615ca",
+        measurementId: "G-XPF25DZYE6"
+    };
+
+    // Inicializar Firebase y la Base de Datos Firestore
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+
+    // Capturar el evento de envío del formulario
+    document.getElementById('agendaForm').addEventListener('submit', async (e) => {
+        e.preventDefault(); // Evita que se recargue la página
+
+        const btn = document.getElementById('btnGuardar');
+        btn.disabled = true;
+        btn.innerText = "Guardando...";
+
+        try {
+            // 1. Recolectar Discursantes Parte 1
+            const mensajes1 = [];
+            document.querySelectorAll('#tablaMensajes1 tbody tr').forEach(tr => {
+                const disc = tr.querySelector('.discursante').value.trim();
+                const tema = tr.querySelector('.tema').value.trim();
+                if(disc || tema) mensajes1.push({ discursante: disc, tema: tema });
+            });
+
+            // 2. Recolectar Discursantes Parte 2
+            const mensajes2 = [];
+            document.querySelectorAll('#tablaMensajes2 tbody tr').forEach(tr => {
+                const disc = tr.querySelector('.discursante').value.trim();
+                const tema = tr.querySelector('.tema').value.trim();
+                if(disc || tema) mensajes2.push({ discursante: disc, tema: tema });
+            });
+
+            // 3. Recolectar Ordenanzas y Bendiciones
+            const ordenanzasYBendiciones = [];
+            document.querySelectorAll('#tablaOrdenanzas tbody tr').forEach(tr => {
+                const ordenado = tr.querySelector('.ordenado').value.trim();
+                const oficio = tr.querySelector('.oficio').value.trim();
+                const efectuoOrden = tr.querySelector('.efectuoOrden').value.trim();
+                const nino = tr.querySelector('.nino').value.trim();
+                const efectuoBendicion = tr.querySelector('.efectuoBendicion').value.trim();
+
+                // Guardar la fila solo si tiene algún dato relleno
+                if(ordenado || oficio || efectuoOrden || nino || efectuoBendicion) {
+                    ordenanzasYBendiciones.push({
+                        ordenadoAlSacerdocio: ordenado,
+                        oficio: oficio,
+                        efectuoOrdenacion: efectuoOrden,
+                        ninoBendecido: nino,
+                        efectuadoPor: efectuoBendicion
+                    });
+                }
+            });
+
+            // 4. Mapear todo el Objeto de la Agenda
+            const agendaData = {
+                barrio: document.getElementById('barrio').value,
+                fecha: document.getElementById('fecha').value,
+                asistencia: Number(document.getElementById('asistencia').value) || 0,
+                preside: document.getElementById('preside').value,
+                dirige: document.getElementById('dirige').value,
+                anuncios: document.getElementById('anuncios').value,
+                negocios: document.getElementById('negocios').value,
+                himnoApertura: document.getElementById('himnoApertura').value,
+                oracionInicial: document.getElementById('oracionInicial').value,
+                asuntosNegociosBreve: document.getElementById('asuntosNegociosBreve').value,
+                himnoSacramental: document.getElementById('himnoSacramental').value,
+                mensajesParte1: mensajes1,
+                himnoIntermedio: document.getElementById('himnoIntermedio').value,
+                mensajesParte2: mensajes2,
+                himnoClausura: document.getElementById('himnoClausura').value,
+                oracionFinal: document.getElementById('oracionFinal').value,
+                ordenanzasYBendiciones: ordenanzasYBendiciones,
+                creadoEn: new Date().toISOString()
+            };
+
+            // 5. Enviar el objeto a Firestore
+            await addDoc(collection(db, "agendas"), agendaData);
+            
+            alert("¡Agenda guardada con éxito en la nube de Firebase!");
+            document.getElementById('agendaForm').reset(); // Limpia el formulario
+
+        } catch (error) {
+            console.error("Error al guardar en Firestore: ", error);
+            alert("Ocurrió un error al guardar la agenda. Revisa la consola.");
+        } finally {
+            btn.disabled = false;
+            btn.innerText = "Guardar Agenda";
+        }
+    });
+</script>
 </body>
 </html>
